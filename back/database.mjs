@@ -8,7 +8,7 @@ import bcrypt from "bcrypt";
 export async function loadSequelize() {
     try {
         const login = {
-            database: "thread-api",
+            database: "app-database",
             username: "root",
             password: "root"
         }
