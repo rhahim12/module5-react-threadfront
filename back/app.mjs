@@ -142,6 +142,12 @@ async function main() {
             res.json(posts);
         });
 
+        app.get('/posts', async (req, res)=>{
+            const posts = await Post.findAll()
+             
+            res.json(posts);
+        });
+
 
         app.get('/users/:userId/posts', async (req, res) => {
             const params = req.params;
@@ -151,6 +157,16 @@ async function main() {
                 }
             })
             res.json(posts);
+        });
+
+         app.get('/user', async (req, res)=>{
+            const params = req.userId;
+            const users = await User.findAll({
+                where:{
+                    Id: params
+                }
+            })
+            res.json(users);
         });
 
 
