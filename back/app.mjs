@@ -153,6 +153,16 @@ async function main() {
             res.json(posts);
         });
 
+         app.get('/user', async (req, res)=>{
+            const params = req.userId;
+            const users = await User.findAll({
+                where:{
+                    Id: params
+                }
+            })
+            res.json(users);
+        });
+
 
         //Delete while loggedin
         app.delete('/posts/:postsId', async (req, res)=>{
