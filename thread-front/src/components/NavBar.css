@@ -1,0 +1,5 @@
+nav.NavItem
+{
+    display: flex;
+    justify-content: space-between;
+}
