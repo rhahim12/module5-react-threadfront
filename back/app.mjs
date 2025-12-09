@@ -135,10 +135,16 @@ async function main() {
 
 
         //Get while loggedin
-        app.get('/posts', async (req, res)=>{
+        app.get('/post', async (req, res)=>{
             const posts = await Post.findAll({
                 where: {UserId: req.userId}
             })
+            res.json(posts);
+        });
+
+        app.get('/posts', async (req, res)=>{
+            const posts = await Post.findAll()
+             
             res.json(posts);
         });
 
