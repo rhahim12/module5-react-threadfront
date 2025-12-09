@@ -1,34 +1,19 @@
 import { useState } from "react";
+import './Post.css'
 
-export function Post({postId}: {postId : number}){
+export function Post({postData}: {postData : Array<String>}){
 
-    const [id, setId] = useState(0)
+    // {postData}: {postData : Array<String>}
 
-    setId(postId);
-    let postData: Array<any> = [];
+    // let data: Array<String> = [];
 
-    async function getPost(){
-
-        try {
-            const response = await fetch(`http://localhost:3000/posts/${id}`);
-
-            let postData = await response.json();
-
-            return postData
-
-        } catch (error : any) {
-            console.error(error.message)
-        }
-
-        return postData
-    }
-
+    // data = postData;
 
     return(
         <div className="post">
-            <h1>@{postData.pseudo}</h1>
-            <p>{postData.content}</p>
-            <p className="post-date-infos">{postData.createdAt}</p>
+            <h2 className="post-username">@Ryu-du57</h2>
+            <p className="post-content">Aujourd'hui je vais donner du contenu inutile et très peu intéressant. Signé Rhahim.</p>
+            <p className="post-date-infos">15:25 13 août 1987</p>
         </div>
     )
 }
