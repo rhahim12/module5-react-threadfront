@@ -4,26 +4,31 @@ import cors from "cors";
 import bcrypt from "bcrypt";
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import 'dotenv/config'
+
 
 /**
  * Point d'entrée de l'application
  * Vous déclarer ici les routes de votre API REST
- */
+*/
 async function main() {
     try {
         const sequelize = await loadSequelize();
         const User = sequelize.models.User;
         const Post = sequelize.models.Post;
         const Comment = sequelize.models.Comment;
-
+        
         const app = express();
         // app.use(cors());
         app.use(cors());
         app.use(express.json());
         app.use(cookieParser());
+        
+        dotenv.config();
+        
 
-
-        const JWT_SECRET = process.env.JWT_SECRET;
+        const JWT_SECRET = process.env.JWT_KEY ;
 
         function isLoggedInJWT(User){
             return async (req, res, next)=>{
