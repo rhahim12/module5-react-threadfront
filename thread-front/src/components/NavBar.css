@@ -1,0 +1,10 @@
+nav.NavItem
+{
+    display: flex;
+    justify-content: space-between;
+    font-size: 60px;
+
+    i{
+        color:white;
+    }
+}
