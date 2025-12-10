@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="feed" element={<Feed />} />
           <Route path="profil" element={<Profile />} />
+          <Route path="newpost" element={<NewPost />}/>
         </Routes>
       </BrowserRouter>
     </>

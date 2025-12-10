@@ -9,6 +9,5 @@ export function NavBar()
             <li><i className="fa-solid fa-user"></i></li> 
             <li><i className="fa-solid fa-message"></i></li>
         </nav>
-        
     )
 }
