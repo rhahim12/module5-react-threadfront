@@ -1,5 +1,5 @@
 import Post from "./Post.tsx"
-import NavBar from "./NavBar.tsx"
+import {NavBar} from "./NavBar.tsx"
 import "./Feed.css"
 import {PostData} from "../types/PostData.interface.tsx"
 import { useEffect, useState } from "react"
@@ -35,7 +35,6 @@ export default function Feed() {
     console.log(datas)
 
     const listPosts = datas.sort((a, b)=>{
-        console.log(new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime())
         return new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
     });
 

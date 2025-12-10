@@ -15,7 +15,7 @@ export default function Post({postData}: {postData : PostData}){
 
     return(
         <div className="post">
-            <h2 className="post-username">@{postData.userId}</h2>
+            <h2 className="post-username">@{postData.User.username}</h2>
             <p className="post-content">{postData.content}</p>
             <p className="post-date-infos">{postDate}</p>
         </div>
