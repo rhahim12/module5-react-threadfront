@@ -6,35 +6,45 @@ import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import 'dotenv/config'
-
-
 /**
  * Point d'entrée de l'application
  * Vous déclarer ici les routes de votre API REST
 */
 async function main() {
     try {
+        dotenv.config()
+        console.log(process.env.JWT_KEY)
+
         const sequelize = await loadSequelize();
         const User = sequelize.models.User;
         const Post = sequelize.models.Post;
         const Comment = sequelize.models.Comment;
-        
+
         const app = express();
         // app.use(cors());
-        app.use(cors());
+
         app.use(express.json());
         app.use(cookieParser());
-        
-        dotenv.config();
-        
 
-        const JWT_SECRET = process.env.JWT_KEY ;
+        app.use(cors(
+            {
+                origin: "https://localhost:5173",
+                credentials: true
+            }
+        ))
+        app.use((req, res, next) => {
+            console.log(req.cookies)
+            next();
+        })
 
-        function isLoggedInJWT(User){
-            return async (req, res, next)=>{
+
+        const JWT_SECRET = process.env.JWT_KEY;
+
+        function isLoggedInJWT(User) {
+            return async (req, res, next) => {
                 const token = req.cookies.token;
-                if (!token){
-                    return res.status(401).json({message: 'Unauthorized: No token provided'});
+                if (!token) {
+                    return res.status(401).json({ message: 'Unauthorized: No token provided' });
                 }
                 try {
                     const decoded = jwt.verify(token, JWT_SECRET);
@@ -45,71 +55,71 @@ async function main() {
                     }
                     next();
                 } catch (error) {
-                    return res.status(401).json({message: 'Unauthorized: Invalid token'});
+                    return res.status(401).json({ message: 'Unauthorized: Invalid token' });
                 }
             }
         };
 
-        app.get("/",(req,res)=>{
-            res.json({message:"ThreadAPI !"})
+        app.get("/", (req, res) => {
+            res.json({ message: "ThreadAPI !" })
         })
 
 
-        app.post('/register', async (req, res)=>{ 
+        app.post('/register', async (req, res) => {
             const { username, email, password, passwordConfirmation } = req.body;
             console.log("oui")
 
-            if(!username || !email || !password || !passwordConfirmation){
-                 return res.status(400).json({message: 'Username, Email, Password and Password confirmation field are required'});
+            if (!username || !email || !password || !passwordConfirmation) {
+                return res.status(400).json({ message: 'Username, Email, Password and Password confirmation field are required' });
             }
             if (password !== passwordConfirmation) {
-                return res.status(400).json({message: 'Password and Password confirmation do not match'});
+                return res.status(400).json({ message: 'Password and Password confirmation do not match' });
             }
             try {
-                const newUser = await User.create({username, email, password});
-                res.status(201).json({message: 'User registered succesfully', userId: newUser.id});
+                const newUser = await User.create({ username, email, password });
+                res.status(201).json({ message: 'User registered succesfully', userId: newUser.id });
             } catch (error) {
                 res.status(500).json({ message: 'Error registering user', error: error.message });
             }
-            res.send
+            res.send()
         })
 
 
 
-        app.post('/login', async (req, res)=>{
+        app.post('/login', async (req, res) => {
             const { email, password } = req.body;
             if (!email || !password) {
-                return res.status(400).json({message: 'Email and password are required'});
+                return res.status(400).json({ message: 'Email and password are required' });
             }
             try {
-                const user = await User.findOne({where: {email} });
+                const user = await User.findOne({ where: { email } });
                 const isPasswordRight = bcrypt.compareSync(password, user.password)
 
-                if (!user || !isPasswordRight){
-                    return res.status(401).json({ message: 'Invalid email or password'});
+                if (!user || !isPasswordRight) {
+                    return res.status(401).json({ message: 'Invalid email or password' });
                 }
 
-                const token = jwt.sign({userId: user.id}, JWT_SECRET, { expiresIn: '2h'});
+                const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '2h' });
 
-                res.cookie('token', token, {httpOnly: true});
-                res.json({message: 'Login succesful'});
+                res.cookie('token', token, { httpOnly: true });
+                res.json({ message: 'Login succesful' });
             } catch (error) {
-                res.status(500).json({message: 'Error logging in', error: error.message});
+                res.status(500).json({ message: 'Error logging in', error: error.message });
             }
         });
-        
+
 
         app.use(isLoggedInJWT(User));
 
 
 
         //Post while loggedin
-        app.post('/logout', async (req, res)=>{
+        app.post('/logout', async (req, res) => {
             res.clearCookie('token');
-            res.json({message: 'Logout succesful' });
+            res.json({ message: 'Logout succesful' });
         });
 
-        app.post('/post', async (req, res)=>{
+        app.post('/post', async (req, res) => {
             const newPostData = req.body;
             try {
                 const newPost = await Post.create({
@@ -119,11 +129,11 @@ async function main() {
                 });
                 res.json(newPost);
             } catch (error) {
-                res.status(500).json({error: "Error during the creation of the post"});
+                res.status(500).json({ error: "Error during the creation of the post" });
             }
         });
 
-        app.post('/posts/:postId/comments', async (req, res)=>{
+        app.post('/posts/:postId/comments', async (req, res) => {
             const newCommentData = req.body;
             const comments = await Comment.create({
                 PostId: req.params.postId,
@@ -135,15 +145,21 @@ async function main() {
 
 
         //Get while loggedin
-        app.get('/posts', async (req, res)=>{
+        app.get('/posts', async (req, res) => {
             const posts = await Post.findAll({
-                where: {UserId: req.userId}
+                where: { UserId: req.userId }
             })
             res.json(posts);
         });
 
+        app.get('/posts', async (req, res) => {
+            const posts = await Post.findAll()
 
-        app.get('/users/:userId/posts', async (req, res)=>{
+            res.json(posts);
+        });
+
+
+        app.get('/users/:userId/posts', async (req, res) => {
             const params = req.params;
             const posts = await Post.findAll({
                 where: {
@@ -153,20 +169,30 @@ async function main() {
             res.json(posts);
         });
 
+        app.get('/user', async (req, res) => {
+            const params = req.userId;
+            const users = await User.findAll({
+                where: {
+                    Id: params
+                }
+            })
+            res.json(users);
+        });
+
 
         //Delete while loggedin
-        app.delete('/posts/:postsId', async (req, res)=>{
+        app.delete('/posts/:postsId', async (req, res) => {
             const postId = req.params.postsId;
             const delPost = await Post.destroy({
-                where: {id: postId}
+                where: { id: postId }
             });
             res.json(delPost);
         });
 
-        app.delete('/comments/:commentsId', async (req, res)=>{
+        app.delete('/comments/:commentsId', async (req, res) => {
             const commentId = req.params.commentsId;
             const delComment = await Comment.destroy({
-                where: {id: commentId}
+                where: { id: commentId }
             });
             res.json(delComment);
         });
