@@ -1,4 +1,4 @@
-import "../Login.css"
+import "./Login.css"
 import { Link } from "react-router-dom"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
     const [mail, setMail] = useState("")
     const [pass, setPass] = useState("")
+    const [user, setUser] = useState("")
+    const [word, setWord] = useState("")
 
      let navigate = useNavigate();
 
