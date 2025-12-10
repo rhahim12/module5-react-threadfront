@@ -1,19 +1,23 @@
 import { useState } from "react";
 import './Post.css'
+import {PostData} from "../types/PostData.interface.tsx"
 
-export default function Post({postData}: {postData : Array<String>}){
+export default function Post({postData}: {postData : PostData}){
 
-    // {postData}: {postData : Array<String>}
+    const postDate = new Date(postData.updatedAt).toLocaleString('fr-FR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
 
-    // let data: Array<String> = [];
-
-    // data = postData;
 
     return(
         <div className="post">
-            <h2 className="post-username">@Ryu-du57</h2>
-            <p className="post-content">Aujourd'hui je vais donner du contenu inutile et très peu intéressant. Signé Rhahim.</p>
-            <p className="post-date-infos">15:25 13 août 1987</p>
+            <h2 className="post-username">@{postData.userId}</h2>
+            <p className="post-content">{postData.content}</p>
+            <p className="post-date-infos">{postDate}</p>
         </div>
     )
 }

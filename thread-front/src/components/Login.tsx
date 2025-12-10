@@ -1,4 +1,4 @@
-import "../Login.css"
+import "./Login.css"
 import { Link } from "react-router-dom"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -78,7 +78,7 @@ return (
             <input type="password" name="password" className="password" placeholder="password" />
             <button>Se connecter</button>
         </form>
-        <p><Link to="/" className="link">Se créer un compte.</Link></p>
+        <p className="create-account-link"><Link to="/" className="link">Se créer un compte.</Link></p>
 
 
     </div>

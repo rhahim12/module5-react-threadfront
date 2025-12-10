@@ -1,58 +1,52 @@
 import Post from "./Post.tsx"
 import NavBar from "./NavBar.tsx"
 import "./Feed.css"
+import {PostData} from "../types/PostData.interface.tsx"
+import { useEffect, useState } from "react"
 
 export default function Feed() {
 
+    const [datas, setDatas] = useState<Array<PostData>>([])
 
-    let data: Array<any> = [];
+    useEffect(() => {
 
+        const fetchPosts = async () => {
+            try {
+                const url = "http://localhost:3000/posts"
+                const response = await fetch(url, {
+                    method: "GET",
+                    credentials: 'include'
+                });
 
-    async function getData(){
-        const url = "http://localhost:3000/posts"   
-        try {
-            const response = await fetch(url, {
-                method: "GET",
-                credentials: 'include'
-            });
-            if (!response.ok) {
-                throw new Error(`Response status: ${response.status}`);
+                if (!response.ok) {
+                    throw new Error(`Erreur ${response.status}`);
+                }
+                const result: Array<PostData> = await response.json();
+                setDatas(result);
+            } catch (error) {
+                console.log(error)
             }
-            const result = await response.json();
-            data = result
+        };
 
-            return data
+        fetchPosts()
+        },[]
+    );
 
-        } catch (error: any) {
-            console.error(error.message);
-        }
+    console.log(datas)
 
-        return
-    }
-
-    console.log(data)
-
-
-
-    const fdata = [
-        "title",
-        "content"
-    ]
+    const listPosts = datas.sort((a, b)=>{
+        console.log(new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime())
+        return new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
+    });
 
 
     return (
         <div className="feed">
             <h1 className="feed-title">Feed</h1>
             <div className="feed-post-box">
-                <Post postData={fdata} />
-                <Post postData={fdata} />
-                <Post postData={fdata} />
-                <Post postData={fdata} />
-                <Post postData={fdata} />
-                <Post postData={fdata} />
-                <Post postData={fdata} />
-                <Post postData={fdata} />
-                <Post postData={fdata} />
+                {listPosts.map((data, i) => {
+                    return <Post postData={data} key={i} />})
+                }
             </div>
             <NavBar />
         </div>
