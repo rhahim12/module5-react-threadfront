@@ -5,9 +5,9 @@ export function NavBar()
 {
     return (
         <nav className='NavItem'>
-            <a href=""><li><i className="fa-solid fa-circle-plus"></i></li></a>
-            <li><i className="fa-solid fa-user"></i></li> 
-            <li><i className="fa-solid fa-message"></i></li>
+            <li><a href="./NewPost.tsx"><i className="fa-solid fa-circle-plus"></i></a></li>
+            <li><a href="./Profil.tsx"><i className="fa-solid fa-circle-user"></i></a></li>
+            <li><a href="./Feed.tsx"><i className="fa-solid fa-message"></i></a></li>
         </nav>
     )
 }
