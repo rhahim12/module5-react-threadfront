@@ -6,6 +6,7 @@ import { NavBar } from './components/NavBar.js'
 import HomePage from './components/HomePage.jsx'
 import Feed from './components/Feed.js'
 import Profile from './components/Profil.js'
+import NewPost from './components/NewPost.js'
 import Login from './components/Login.js'
 
 function App() {
