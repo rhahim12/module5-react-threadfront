@@ -60,3 +60,18 @@ button{
     color: #555151;
     font-size: 30px;
 }
+
+@media screen and (max-width: 680px) {
+  
+ 
+    .email{
+        width: 100%;
+    }
+ 
+    .password{
+        width: 100%;
+    }
+
+
+
+}
