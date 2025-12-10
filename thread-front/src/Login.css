@@ -1,0 +1,62 @@
+body {
+
+    background-color: #1b1b1b;
+}
+
+h1{
+    font-size: 50px;
+    border-left: 5px solid white ;
+    
+}
+p{
+    color: #555151;
+
+}
+
+
+
+.test {
+    color:#f6f6f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.test>form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+    
+}
+
+.email{
+    font-size:50px;
+    background:#1b1b1b;
+    border: none;
+    color: #cbc2c2;
+    /* padding-top: 90px; */
+
+  
+
+}
+.password{
+    font-size:50px;
+    background-color: #1b1b1b;
+    border: none;
+    color:#cbc2c2;
+    /* padding-top: 90px; */
+}
+button{
+    font-size:20px;
+    width:25%;
+    height: 10%;
+    border-radius: 8px;
+}
+.link{
+    color: #555151;
+    font-size: 30px;
+}
