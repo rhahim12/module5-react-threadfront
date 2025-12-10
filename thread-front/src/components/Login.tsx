@@ -80,7 +80,7 @@ return (
             <input type="password" name="password" className="password" placeholder="password" />
             <button>Se connecter</button>
         </form>
-        <p><Link to="/" className="link">Se créer un compte.</Link></p>
+        <p className="create-account-link"><Link to="/" className="link">Se créer un compte.</Link></p>
 
 
     </div>
