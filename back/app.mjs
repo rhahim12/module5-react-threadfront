@@ -19,12 +19,14 @@ async function main() {
 
         const app = express();
         // app.use(cors());
-        app.use(cors());
+        app.use(cors({
+            origin: "https://localhost:5173",
+            credentials: true
+        }));
         app.use(express.json());
         app.use(cookieParser());
         
         dotenv.config()
-        console.log(process.env.JWT_KEY)
 
 
 
@@ -135,7 +137,7 @@ async function main() {
 
 
         //Get while loggedin
-        app.get('/posts', async (req, res) => {
+        app.get('/user/posts', async (req, res) => {
             const posts = await Post.findAll({
                 where: { UserId: req.userId }
             })

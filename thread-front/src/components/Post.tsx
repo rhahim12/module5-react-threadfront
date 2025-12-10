@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './Post.css'
 
-export function Post({postData}: {postData : Array<String>}){
+export default function Post({postData}: {postData : Array<String>}){
 
     // {postData}: {postData : Array<String>}
 
