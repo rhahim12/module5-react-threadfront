@@ -6,7 +6,7 @@ import { NavBar } from './components/NavBar.js'
 import HomePage from './components/HomePage.jsx'
 import Feed from './components/Feed.js'
 import Profile from './components/Profil.js'
-import  NewPost  from './components/NewPost.js'
+import Login from './components/Login.js'
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
           <Route path="feed" element={<Feed />} />
           <Route path="profil" element={<Profile />} />
           <Route path="newpost" element={<NewPost />}/>
+          <Route path="login" element={<Login />} />
         </Routes>
       </BrowserRouter>
       <NavBar/>

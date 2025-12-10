@@ -12,6 +12,9 @@ import 'dotenv/config'
 */
 async function main() {
     try {
+        dotenv.config()
+        console.log(process.env.JWT_KEY)
+
         const sequelize = await loadSequelize();
         const User = sequelize.models.User;
         const Post = sequelize.models.Post;
@@ -19,13 +22,20 @@ async function main() {
 
         const app = express();
         // app.use(cors());
-        app.use(cors());
+
         app.use(express.json());
         app.use(cookieParser());
-        
-        dotenv.config()
-        console.log(process.env.JWT_KEY)
 
+        app.use(cors(
+            {
+                origin: "https://localhost:5173",
+                credentials: true
+            }
+        ))
+        app.use((req, res, next) => {
+            console.log(req.cookies)
+            next();
+        })
 
 
         const JWT_SECRET = process.env.JWT_KEY;
@@ -71,7 +81,7 @@ async function main() {
             } catch (error) {
                 res.status(500).json({ message: 'Error registering user', error: error.message });
             }
-            res.send
+            res.send()
         })
 
 
@@ -142,9 +152,9 @@ async function main() {
             res.json(posts);
         });
 
-        app.get('/posts', async (req, res)=>{
+        app.get('/posts', async (req, res) => {
             const posts = await Post.findAll()
-             
+
             res.json(posts);
         });
 
@@ -159,10 +169,10 @@ async function main() {
             res.json(posts);
         });
 
-         app.get('/user', async (req, res)=>{
+        app.get('/user', async (req, res) => {
             const params = req.userId;
             const users = await User.findAll({
-                where:{
+                where: {
                     Id: params
                 }
             })
