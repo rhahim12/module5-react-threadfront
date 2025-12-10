@@ -1,0 +1,74 @@
+.all {
+    color: #f6f6f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.all>form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+}
+
+.pseudo {
+    font-size: 50px;
+    background: #1b1b1b;
+    border: none;
+    color: #cbc2c2;
+}
+
+.email {
+    font-size: 50px;
+    background: #1b1b1b;
+    border: none;
+    color: #cbc2c2;
+}
+
+.mot {
+    font-size: 50px;
+    background: #1b1b1b;
+    border: none;
+    color: #cbc2c2;
+}
+
+.pass {
+    font-size: 50px;
+    background: #1b1b1b;
+    border: none;
+    color: #cbc2c2;
+}
+
+button {
+
+    font-size: 20px;
+    width: 50%;
+    height: 10%;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 680px) {
+  
+    .all>form{
+        width: 100%;
+    }
+    .pseudo{
+        width: 100%;
+    }
+    .email{
+        width: 100%;
+    }
+    .mot{
+        width: 100%;
+    }
+    .pass{
+        width: 100%;
+    }
+
+
+
+}
