@@ -1,6 +1,6 @@
 .comment{
     background: #c7c5c5;
-    background: linear-gradient(136deg, rgb(232, 231, 231) 65%, rgba(144, 143, 143, 0.58) 90%);
+    background: linear-gradient(136deg, rgb(232, 231, 231) 65%, rgba(189, 189, 189, 0.58) 90%);
     border-radius: 30px;
     min-height: 140px;
     width: 100%;
@@ -12,6 +12,7 @@
 
 .comment-name {
     font-weight: bold;
+    border: 0px;
 }
 
 .comment-text {
@@ -20,4 +21,4 @@
 
 .comment-date {
     font-weight: normal;
-}S
+}

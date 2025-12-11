@@ -7,6 +7,7 @@ import Feed from './components/Feed.js'
 import Profile from './components/Profil.js'
 import Login from './components/Login.js'
 
+
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="feed" element={<Feed />} />
           <Route path="profil" element={<Profile />} />
           <Route path="login" element={<Login />} />
+          <Route path="comment" element={<Comment />} />
         </Routes>
       </BrowserRouter>
     </>
