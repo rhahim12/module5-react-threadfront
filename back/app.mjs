@@ -13,7 +13,6 @@ import 'dotenv/config'
 async function main() {
     try {
         dotenv.config()
-        console.log(process.env.JWT_KEY)
 
         const sequelize = await loadSequelize();
         const User = sequelize.models.User;
@@ -145,7 +144,7 @@ async function main() {
 
 
         //Get while loggedin
-        app.get('/posts', async (req, res) => {
+        app.get('/user/posts', async (req, res) => {
             const posts = await Post.findAll({
                 where: { UserId: req.userId }
             })
@@ -153,8 +152,9 @@ async function main() {
         });
 
         app.get('/posts', async (req, res) => {
-            const posts = await Post.findAll()
-
+            const posts = await Post.findAll({
+                include: User
+            })
             res.json(posts);
         });
 

@@ -10,6 +10,7 @@
     "dev": "nodemon app.mjs"
   },
   "devDependencies": {
+    "mkcert": "^3.2.0",
     "nodemon": "^3.1.11"
   },
   "dependencies": {
