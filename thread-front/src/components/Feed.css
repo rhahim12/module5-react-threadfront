@@ -1,0 +1,24 @@
+.feed{
+    display: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+}
+
+.feed-title{
+    border-left: 2px solid white;
+    padding-left: 1vh;
+    margin: 20px 0 20px;
+}
+
+.feed-post-box{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    scrollbar-width: none;
+    height: 75vh;
+}
+
+.feed-post-box>*{
+    margin-top: 4vh;
+}

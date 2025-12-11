@@ -1,4 +1,4 @@
-import "../Login.css"
+import "./Login.css"
 import { Link } from "react-router-dom"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
     const [mail, setMail] = useState("")
     const [pass, setPass] = useState("")
+    const [user, setUser] = useState("")
+    const [word, setWord] = useState("")
 
      let navigate = useNavigate();
 
@@ -78,7 +80,7 @@ return (
             <input type="password" name="password" className="password" placeholder="password" />
             <button>Se connecter</button>
         </form>
-        <p><Link to="/" className="link">Se créer un compte.</Link></p>
+        <p className="create-account-link"><Link to="/" className="link">Se créer un compte.</Link></p>
 
 
     </div>
