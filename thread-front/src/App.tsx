@@ -9,6 +9,7 @@ import Feed from './components/Feed.js'
 import Profil from './components/Profil.js'
 import Login from './components/Login.js'
 import Register from './components/Register.js'
+import Create from './components/Createpost.js'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="comment" element={<Comment />} />
           <Route path="register" element={<Register />} />
+          <Route path="Createpost" element={<Create />} />
         </Routes>
       </BrowserRouter>
       <NavBar/>
