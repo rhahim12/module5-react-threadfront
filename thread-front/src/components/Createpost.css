@@ -1,0 +1,44 @@
+.creat{
+      /* color:#f6f6f6; */
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center;  */
+    flex-direction: column;
+    justify-content: space-around  ;
+    height: 80vh;
+    /* background-color: blue */
+    
+}
+
+.hache{
+    color: white;
+}
+
+.creat>form{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+}
+.text{
+    background-color: #0e0e0e;
+    color:aliceblue;
+    height: 80vh;
+    vertical-align: text-top;
+    border-radius: 10px;
+}
+button{
+    background-color: white;
+    height: 10vh;
+    width: 10vw;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 680px) {
+    button{
+        width: 50%;
+        margin-top: 15px;
+    }
+}
+
+
+

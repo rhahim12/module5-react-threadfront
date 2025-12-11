@@ -7,6 +7,7 @@ import Feed from './components/Feed.js'
 import Profile from './components/Profil.js'
 import Login from './components/Login.js'
 import Register from './components/Register.js'
+import Create from './components/Createpost.js'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="profil" element={<Profile />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="Createpost" element={<Create />} />
         </Routes>
       </BrowserRouter>
     </>
