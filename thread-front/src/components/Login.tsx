@@ -26,11 +26,6 @@ export default function Login() {
             return;
         }
 
-
-
-
-
-
         console.log(email)
         console.log(password)
         setMail(email)

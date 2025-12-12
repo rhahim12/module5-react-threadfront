@@ -13,10 +13,12 @@
 .comment-name {
     font-weight: bold;
     border: 0px;
+    color:black;
 }
 
 .comment-text {
     font-weight: bold;
+    color:black;
 }
 
 .comment-date {

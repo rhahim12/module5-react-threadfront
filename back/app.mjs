@@ -151,6 +151,16 @@ async function main() {
             res.json(posts);
         });
 
+        app.get('/post/:postId/comments', async (req, res) => {
+            const params = req.params;
+            const comments = await Comment.findAll({
+                where: { 
+                    PostId: params.postId 
+                }
+            })
+            res.json(comments);
+        });
+
         app.get('/posts', async (req, res) => {
             const posts = await Post.findAll({
                 include: User
