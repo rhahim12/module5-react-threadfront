@@ -128,6 +128,7 @@ async function main() {
                 });
                 res.json(newPost);
             } catch (error) {
+                console.log(error)
                 res.status(500).json({ error: "Error during the creation of the post" });
             }
         });

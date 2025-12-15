@@ -22,6 +22,7 @@ h1{
     justify-content: center;
     flex-direction: column;
     height: 80vh;
+    
 }
 
 .test>form{
