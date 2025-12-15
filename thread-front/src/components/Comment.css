@@ -1,0 +1,24 @@
+.comment{
+    background: #c7c5c5;
+    background: linear-gradient(136deg, rgb(232, 231, 231) 65%, rgba(189, 189, 189, 0.58) 90%);
+    border-radius: 30px;
+    min-height: 140px;
+    width: 100%;
+    padding-left: 20px;
+    font-family: Georgia, serif;
+    padding-top: 1px;
+    padding-bottom: 6px;
+}
+
+.comment-name {
+    font-weight: bold;
+    border: 0px;
+}
+
+.comment-text {
+    font-weight: bold;
+}
+
+.comment-date {
+    font-weight: normal;
+}
