@@ -146,7 +146,8 @@ async function main() {
         //Get while loggedin
         app.get('/user/posts', async (req, res) => {
             const posts = await Post.findAll({
-                where: { UserId: req.userId }
+                where: { UserId: req.userId },
+                include: User
             })
             res.json(posts);
         });
