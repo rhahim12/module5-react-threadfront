@@ -1,8 +1,24 @@
-div.profilHead
+.Profil
 {
+    display: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+}
+
+.profil-title
+{
+    border-left: 2px solid white;
+    padding-left: 1vh;
+    margin: 20px 0 20px;
+}
+
+.profil-head
+{
+    margin-top: 0px;
+    margin-bottom: 0px;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
     color: white;
 }
