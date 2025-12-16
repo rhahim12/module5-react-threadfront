@@ -55,20 +55,23 @@ export default function Profil() {
     );
 
     const profilelistPost = postdatas.sort((a, b)=>{
-        return new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
+        return new Date(b.updatedAt).getTime() -new Date(a.updatedAt).getTime()
     })
 
     return (
         <>
-            <div className="profilHead">
-                <h1>Profil</h1>
-                <h2>@{profildatas?.username}</h2>
+        <div className="Profil">
+            <div className="profil-head">
+                <h1 className="Profil-title">Profil</h1>
+                <h2 className="Profil-username">@{profildatas?.username}</h2>
             </div>
-            <div className="profilAllPost">
-                {profilelistPost.map((postdatas, i)=>{
-                   return <Post postData={postdatas} key={i} />
+
+            <div className="profil-allpost">
+                {profilelistPost.map((postData, i)=>{
+                    return <Post postData={postData} key={i} />
                 })}
             </div>
+        </div>
         </>
     )
 
