@@ -14,10 +14,6 @@ let navigate = useNavigate();
         method: "POST",
         headers: myHeaders,
         credentials: "include",
-        // body: JSON.stringify({
-        //     email: mail,
-        //     password: pass
-        // }),
     })
         .then((response) => {
             if (response.ok == false) {
@@ -30,15 +26,13 @@ let navigate = useNavigate();
 
             console.log(result)
             navigate("/login")
+            localStorage.removeItem("prénom")
 
 
         }).catch(console.log)
 
-        console.log("rhahmss")
+        
     
-
-
-
     return(
         <div>
             <h1>Logout</h1>

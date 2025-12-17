@@ -34,20 +34,10 @@ export default function Register() {
             return;
         }
 
-
-                console.log(user)
-        console.log(email)
-        console.log(password)
-        console.log(word)
         setUser(user)
         setMail(email)
         setPass(password)
         setWord(word)
-
-
-
-
-
     }
 
     const myHeaders = new Headers();
