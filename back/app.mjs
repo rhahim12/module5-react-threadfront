@@ -128,6 +128,7 @@ async function main() {
                 });
                 res.json(newPost);
             } catch (error) {
+                console.log(error)
                 res.status(500).json({ error: "Error during the creation of the post" });
             }
         });
@@ -146,7 +147,8 @@ async function main() {
         //Get while loggedin
         app.get('/user/posts', async (req, res) => {
             const posts = await Post.findAll({
-                where: { UserId: req.userId }
+                where: { UserId: req.userId },
+                include: User
             })
             res.json(posts);
         });

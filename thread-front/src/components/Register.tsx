@@ -43,11 +43,6 @@ export default function Register() {
         setMail(email)
         setPass(password)
         setWord(word)
-
-
-
-
-
     }
 
     const myHeaders = new Headers();
