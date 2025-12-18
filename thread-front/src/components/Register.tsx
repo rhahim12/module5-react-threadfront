@@ -35,7 +35,7 @@ export default function Register() {
         }
 
 
-                console.log(user)
+        console.log(user)
         console.log(email)
         console.log(password)
         console.log(word)

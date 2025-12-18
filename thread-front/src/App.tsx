@@ -10,6 +10,7 @@ import Profil from './components/Profil.js'
 import Login from './components/Login.js'
 import Register from './components/Register.js'
 import { Comment } from './components/Comment.js'
+import { PostDetail } from './components/PostDetail.js'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="comment" element={<Comment userName='@BillyJoeArmstrong' commentText="Haha trop drôle !" commentDate="15:25 13 août 25"/>} />
           <Route path="register" element={<Register />} />
+          <Route path="post-detail/:postId" element={<PostDetail />} />
         </Routes>
       </BrowserRouter>
       <NavBar/>

@@ -167,6 +167,9 @@ export async function loadSequelize() {
             }
         );
 
+  
+
+
         return sequelize;
     } catch (error) {
         console.error(error);
