@@ -1,12 +1,15 @@
 import './Comment.css'
 
-export default function Comment(){
-    return(
+type CommentProps = { userName: string, commentText: string, commentDate: string };
+
+export function Comment(props: CommentProps) {
+    const { userName, commentText, commentDate } = props;
+    return (
         <div className="comment">
-            <h1 className="comment-name">@BillyJoeArmstrongh</h1>
-            <p className="comment-text">Haha trop drôle !</p>
-            <p className="comment-date">15:25 15 août 25</p>
+            <h1 className="comment-name">{userName}</h1>
+            <p className="comment-text">{commentText}</p>
+            <p className="comment-date">{commentDate}</p>
         </div>
-        
     );
 }
+

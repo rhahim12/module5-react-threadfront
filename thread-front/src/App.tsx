@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Comment from './components/Comment.js'
+
 
 import { NavBar } from './components/NavBar.js'
 import HomePage from './components/HomePage.jsx'
@@ -13,6 +13,8 @@ import Create from './components/Createpost.js'
 import Lougout from './components/Logout.js'
 import PrivateRoutes from './utils/PrivateRoute.tsx'
 
+import { Comment } from './components/Comment.js'
+import { PostDetail } from './components/PostDetail.js'
 
 
 function App() {
@@ -30,7 +32,10 @@ function App() {
           <Route path="Logout" element={<Lougout />} />
           </Route>
           <Route path="login" element={<Login />} />
+          <Route path="login" element={<Login />} />
+          <Route path="comment" element={<Comment userName='@BillyJoeArmstrong' commentText="Haha trop drôle !" commentDate="15:25 13 août 25"/>} />
           <Route path="register" element={<Register />} />
+          <Route path="post-detail/:postId" element={<PostDetail />} />
         </Routes>
       </BrowserRouter>
       <NavBar/>
