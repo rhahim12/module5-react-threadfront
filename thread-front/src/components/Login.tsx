@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
     const [mail, setMail] = useState("")
     const [pass, setPass] = useState("")
-    const [user, setUser] = useState("")
-    const [word, setWord] = useState("")
+ 
 
      let navigate = useNavigate();
 
@@ -26,13 +25,6 @@ export default function Login() {
             return;
         }
 
-
-
-
-
-
-        console.log(email)
-        console.log(password)
         setMail(email)
         setPass(password)
     }
@@ -61,15 +53,12 @@ export default function Login() {
 
             console.log(result)
             navigate("/feed")
+            localStorage.setItem("prénom","rhahim")
 
 
         }).catch(console.log)
 
-    // return(
-    //     <div>
-    //         <h1>Test</h1>
-    //     </div>
-    // )
+
 
 return (
     <div className="test">
@@ -80,7 +69,7 @@ return (
             <input type="password" name="password" className="password" placeholder="password" />
             <button>Se connecter</button>
         </form>
-        <p className="create-account-link"><Link to="/" className="link">Se créer un compte.</Link></p>
+        <p className="create-account-link"><Link to="/Register" className="link">Se créer un compte.</Link></p>
 
 
     </div>
