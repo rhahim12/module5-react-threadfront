@@ -70,15 +70,17 @@ export function PostDetail() {
 
     const commentsElements = comments.map(comment => {
         return (
-            <Comment commentData = {comment} />
+            <Comment commentData = {comment}/>
         )
     })
     return (
-        <div>
+        <div className='post-detail'>
+            <h1>Post</h1>
             {post && <Post postData = {post}/>}
             <div className="all-comments">
             {commentsElements}
             </div>
+            <NavBar/>
         </div>
     );
 }
