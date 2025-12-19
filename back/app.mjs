@@ -148,9 +148,30 @@ async function main() {
         //Get while loggedin
         app.get('/user/posts', async (req, res) => {
             const posts = await Post.findAll({
-                where: { UserId: req.userId }
+                where: { UserId: req.userId },
+                include: User
             })
             res.json(posts);
+        });
+
+        app.get('/post/:postId', async (req, res) => {
+            const post = await Post.findOne({
+                where: {
+                    id: req.params.postId
+                },
+                include: User
+            })
+            res.json(post);
+        })
+
+        app.get('/post/:postId/comments', async (req, res) => {
+            const params = req.params;
+            const comments = await Comment.findAll({
+                where: { 
+                    PostId: params.postId 
+                }
+            })
+            res.json(comments);
         });
 
         app.get('/posts', async (req, res) => {
@@ -203,13 +224,13 @@ async function main() {
         });
 
         app.get('/user', async (req, res) => {
-            const params = req.userId;
-            const users = await User.findAll({
+            // User.findByPk()
+            const user = await User.findAll({
                 where: {
-                    Id: params
+                    Id: req.userId
                 }
             })
-            res.json(users);
+            res.json(user);
         });
 
 

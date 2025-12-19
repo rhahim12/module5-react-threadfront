@@ -1,12 +1,23 @@
 import './Comment.css'
+import {CommentsData} from "../types/CommentsData.interface"
 
-export default function Comment(){
-    return(
+//  type CommentProps = { userName: string, commentText: string, commentDate: String };
+
+export function Comment({commentData}: {commentData : CommentsData}) {
+
+    const commentDate = new Date(commentData.updatedAt).toLocaleString('fr-FR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    return (
         <div className="comment">
-            <h1 className="comment-name">@BillyJoeArmstrongh</h1>
-            <p className="comment-text">Haha trop drôle !</p>
-            <p className="comment-date">15:25 15 août 25</p>
+            <p className="comment-text">{commentData.content}</p>
+            <p className="comment-date">{commentDate}</p>
         </div>
-        
     );
 }
+
