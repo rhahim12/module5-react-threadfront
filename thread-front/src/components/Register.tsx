@@ -82,13 +82,13 @@ export default function Register() {
 
 
     return (
-        <div className="all">
+        <div className="register">
             <h1>Creation de compte </h1>
             <form onSubmit={start}>
-                <input type="text" className="pseudo" name="use" placeholder="@Pseudo" />
-                <input type="text" className="email" name="email" placeholder="email" />
-                <input type="text" className="mot" name="pass" placeholder="mot de passe" />
-                <input type="text" className="pass" name="word" placeholder="mot de passe encore" />
+                <input type="text" className="reg-input" name="use" placeholder="@Pseudo" />
+                <input type="text" className="reg-input" name="email" placeholder="email" />
+                <input type="text" className="reg-input" name="pass" placeholder="mot de passe" />
+                <input type="text" className="reg-input" name="word" placeholder="mot de passe encore" />
                 <button>Créer un compte</button>
             </form>
         </div>

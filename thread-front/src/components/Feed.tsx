@@ -47,6 +47,7 @@ export default function Feed() {
                     return <Post postData={data} key={i} />})
                 }
             </div>
+            <NavBar />
         </div>
 
     )
