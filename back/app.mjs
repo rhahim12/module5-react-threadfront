@@ -157,7 +157,8 @@ async function main() {
             const post = await Post.findOne({
                 where: {
                     id: req.params.postId
-                }
+                },
+                include: User
             })
             res.json(post);
         })
