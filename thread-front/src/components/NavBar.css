@@ -4,6 +4,7 @@ nav.NavItem
     justify-content: space-between;
     font-size: 60px;
     list-style-type: none;
+    padding-top: 20px;
     i{
         color:white;
     }

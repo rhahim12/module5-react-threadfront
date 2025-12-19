@@ -2,13 +2,7 @@
     display: flex-start;
     flex-direction: column;
     align-items: center;
-    width: 80vw;
-}
-
-.feed-title{
-    border-left: 2px solid white;
-    padding-left: 1vh;
-    margin: 20px 0 20px;
+    width: 85vw;
 }
 
 .feed-post-box{
