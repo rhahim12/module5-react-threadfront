@@ -9,30 +9,21 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
     const [mail, setMail] = useState("")
     const [pass, setPass] = useState("")
-    const [user, setUser] = useState("")
-    const [word, setWord] = useState("")
 
-     let navigate = useNavigate();
+    let navigate = useNavigate();
 
-    function start(event: any)  : void{
+    function start(event: any): void {
         event.preventDefault();
         const FormData_obj = new FormData(event.target)
         const email = FormData_obj.get("email")?.toString();
-        if(email == undefined){
+        if (email == undefined) {
             return;
         }
         const password = FormData_obj.get("password")?.toString();
-         if(password == undefined){
+        if (password == undefined) {
             return;
         }
 
-
-
-
-
-
-        console.log(email)
-        console.log(password)
         setMail(email)
         setPass(password)
     }
@@ -61,28 +52,19 @@ export default function Login() {
 
             console.log(result)
             navigate("/feed")
-
+            localStorage.setItem("prénom", "Rhahim")
 
         }).catch(console.log)
 
-    // return(
-    //     <div>
-    //         <h1>Test</h1>
-    //     </div>
-    // )
-
-return (
-    <div className="test">
-        <h1>Connexion</h1>
-
-        <form onSubmit={start}>
-            <input type="text" name="email" className="email" placeholder="email" />
-            <input type="password" name="password" className="password" placeholder="password" />
-            <button>Se connecter</button>
-        </form>
-        <p className="create-account-link"><Link to="/" className="link">Se créer un compte.</Link></p>
-
-
-    </div>
-)
+    return (
+        <div className="test">
+            <h1>Connexion</h1>
+            <form onSubmit={start}>
+                <input type="text" name="email" className="email" placeholder="email" />
+                <input type="password" name="password" className="password" placeholder="password" />
+                <button>Se connecter</button>
+            </form>
+            <p className="create-account-link"><Link to="/register" className="link">Se créer un compte.</Link></p>
+        </div>
+    )
 }
