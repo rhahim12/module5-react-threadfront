@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import 'dotenv/config'
+import { QueryTypes } from "sequelize";
 /**
  * Point d'entrée de l'application
  * Vous déclarer ici les routes de votre API REST
@@ -159,6 +160,37 @@ async function main() {
             res.json(posts);
         });
 
+        app.get('/posts/:limit/:page', async (req, res) => {
+            try {
+                /*const posts = await Post.findAll({
+                    include: User,
+                    limit: parseInt(req.params.limit),
+                    offset: parseInt(req.params.page) * parseInt(req.params.limit)
+                });*/
+
+                const posts = await sequelize.query("SELECT `Post`.`id`, `Post`.`title`, `Post`.`content`, `Post`.`createdAt`, `Post`.`updatedAt`, `Post`.`UserId`, `User`.`id` AS `User.id`, `User`.`username` AS `User.username`, `User`.`email` AS `User.email`, `User`.`password` AS `User.password`, `User`.`createdAt` AS `User.createdAt`, `User`.`updatedAt` AS `User.updatedAt` FROM `Posts` AS `Post` LEFT OUTER JOIN `Users` AS `User` ON `Post`.`UserId` = `User`.`id` LIMIT :limit OFFSET :offset", {
+                    replacements: {
+                        limit: parseInt(req.params.limit),
+                        offset: parseInt(req.params.page-1) * parseInt(req.params.limit)
+                    },
+                    type: QueryTypes.SELECT,
+                });
+
+                const dto = [];
+                for (let i = 0; i < posts.length; i++) {
+                    const post = posts[i];
+                    const user = await User.findByPk(post.UserId);
+                    dto.push({
+                        ...post,
+                        User: user.dataValues
+                    });
+                }
+                res.json(dto);
+            } catch (error) {
+                console.log(error)
+                res.status(500).json()
+            }
+        });
 
         app.get('/users/:userId/posts', async (req, res) => {
             const params = req.params;
