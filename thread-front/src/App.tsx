@@ -38,7 +38,6 @@ function App() {
           <Route path="post-detail/:postId" element={<PostDetail />} />
         </Routes>
       </BrowserRouter>
-      <NavBar/>
     </>
   )
 }

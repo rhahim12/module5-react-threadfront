@@ -1,50 +1,31 @@
-.all {
+.register {
     color: #f6f6f6;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 80vh;
+    width: 90vw;
+    height: 85vh;
 }
 
-.all>form {
+.register>form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
+    width: 85vw;
     height: 80%;
 }
 
-.pseudo {
-    font-size: 50px;
+.reg-input {
+    font-size: 2em;
     background: #1b1b1b;
     border: none;
     color: #cbc2c2;
-}
-
-.email {
-    font-size: 50px;
-    background: #1b1b1b;
-    border: none;
-    color: #cbc2c2;
-}
-
-.mot {
-    font-size: 50px;
-    background: #1b1b1b;
-    border: none;
-    color: #cbc2c2;
-}
-
-.pass {
-    font-size: 50px;
-    background: #1b1b1b;
-    border: none;
-    color: #cbc2c2;
+    width: 85vw;
 }
 
 button {
-
     font-size: 20px;
     width: 50%;
     height: 10%;
@@ -53,19 +34,7 @@ button {
 
 @media screen and (max-width: 680px) {
   
-    .all>form{
-        width: 100%;
-    }
-    .pseudo{
-        width: 100%;
-    }
-    .email{
-        width: 100%;
-    }
-    .mot{
-        width: 100%;
-    }
-    .pass{
+    .register>form{
         width: 100%;
     }
 

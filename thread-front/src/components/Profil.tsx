@@ -3,6 +3,7 @@ import Post from "./Post";
 import "./Profil.css"
 import { PostData } from "../types/PostData.interface";
 import { ProfilData } from "../types/ProfilData.interface";
+import { NavBar } from "./NavBar";
 
 export default function Profil() {
     const [postdatas, postSetDatas] = useState<Array<PostData>>([])
@@ -59,10 +60,9 @@ export default function Profil() {
     })
 
     return (
-        <>
         <div className="Profil">
             <div className="profil-head">
-                <h1 className="Profil-title">Profil</h1>
+                <h1 className="Profil-title">Profile</h1>
                 <h2 className="Profil-username">@{profildatas?.username}</h2>
             </div>
 
@@ -71,8 +71,8 @@ export default function Profil() {
                     return <Post postData={postData} key={i} />
                 })}
             </div>
+            <NavBar />
         </div>
-        </>
     )
 
 }
