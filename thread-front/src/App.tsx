@@ -3,8 +3,6 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
-import { NavBar } from './components/NavBar.js'
-import HomePage from './components/HomePage.jsx'
 import Feed from './components/Feed.js'
 import Profil from './components/Profil.js'
 import Login from './components/Login.js'
@@ -24,10 +22,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element ={<PrivateRoutes/>}>
-          <Route path="/" element={<Feed />} />
+          <Route path="/" element={<Login />} />
           <Route element={<Feed />} path='/feed' />
           <Route path="profil" element={<Profil />} />
-          <Route path="comment" element={<Comment />} />
           <Route path="Createpost" element={<Create />} />
           <Route path="Logout" element={<Lougout />} />
           </Route>

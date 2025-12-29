@@ -44,7 +44,7 @@ export default function Feed() {
             <h1 className="feed-title">Feed</h1>
             <div className="feed-post-box">
                 {listPosts.map((data, i) => {
-                    return <Post postData={data} key={i} />})
+                    return <Post postData={data} key={i}/>})
                 }
             </div>
             <NavBar />
