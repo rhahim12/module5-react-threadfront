@@ -1,0 +1,16 @@
+.post-detail{
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-detail>.post{
+    margin-bottom: 40px;
+}
+
+.all-comments{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    overflow: scroll;
+}
