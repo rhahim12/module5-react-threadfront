@@ -29,8 +29,6 @@ function App() {
           <Route path="Logout" element={<Lougout />} />
           </Route>
           <Route path="login" element={<Login />} />
-          <Route path="login" element={<Login />} />
-          <Route path="comment" element={<Comment userName='@BillyJoeArmstrong' commentText="Haha trop drôle !" commentDate="15:25 13 août 25"/>} />
           <Route path="register" element={<Register />} />
           <Route path="post-detail/:postId" element={<PostDetail />} />
         </Routes>
